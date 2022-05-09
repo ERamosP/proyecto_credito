@@ -2,12 +2,12 @@ package DataBase;
 
 import java.io.Serializable;
 
-public class Cliente implements Serializable {
+public class Cliente implements Serializable{
 
     private int numeroCliente;
     private String nombre;
     private String apellido1;
-    private String getApellido2;
+    private String apellido2;
     private int saldo;
     private int ingresosMedios;
     private int gastosMedios;
@@ -18,7 +18,7 @@ public class Cliente implements Serializable {
         this.numeroCliente = numeroCliente;
         this.nombre = nombre;
         this.apellido1 = apellido1;
-        this.getApellido2 = getApellido2;
+        this.apellido2 = getApellido2;
         this.saldo = saldo;
         this.ingresosMedios = ingresosMedios;
         this.gastosMedios = gastosMedios;
@@ -54,12 +54,12 @@ public class Cliente implements Serializable {
         this.apellido1 = apellido1;
     }
 
-    public String getGetApellido2() {
-        return getApellido2;
+    public String getApellido2() {
+        return apellido2;
     }
 
-    public void setGetApellido2(String getApellido2) {
-        this.getApellido2 = getApellido2;
+    public void setApellido2(String apellido2) {
+        this.apellido2 = apellido2;
     }
 
     public int getSaldo() {
@@ -107,7 +107,7 @@ public class Cliente implements Serializable {
         return  "numeroCliente= " + numeroCliente +
                 ", nombre= " + nombre +
                 ", apellido1= " + apellido1 +
-                ", getApellido2= " + getApellido2 +
+                ", getApellido2= " + apellido2 +
                 ", saldo= " + saldo +
                 ", ingresosMedios= " + ingresosMedios +
                 ", gastosMedios= " + gastosMedios +
@@ -116,16 +116,15 @@ public class Cliente implements Serializable {
     }
 
 
- /*   @Override
+  /*   @Override
     public int compareTo(Object o) {
         int salida=-1;
         if (o instanceof Cliente){
             Cliente cliente=(Cliente) o;
-           salida=this.numeroCliente.compareTo(CLiente )
+           salida=this.numeroCliente.compareTo(cliente.numeroCliente);
         }
         return salida;
     }*/
-
 
 
 

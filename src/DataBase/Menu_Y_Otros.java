@@ -52,11 +52,12 @@ public class Menu_Y_Otros {
 
             opcion=leerDatos();
             switch (opcion){
-                case "1": System.out.println("En construccion");
+                case "1": {  Escritura_Ficheros.añadirClientesFichero(Lectura_Ficheros.obtenerClientes());
+                    Lectura_Ficheros.obtenerClientes("ficheroClienteCero.dat");}
                 break;
-                case "2": System.out.println("En construccion");
+                case "2": Lectura_Ficheros.obtenerClientes("ficheroClienteCredito.dat");
                     break;
-                case "3": System.out.println("En construccion");
+                case "3": Lectura_Ficheros.obtenerClientes("ficheroClienteDebito.dat");
                     break;
                 case "4": do {
                     pintarMenuSecundario();
