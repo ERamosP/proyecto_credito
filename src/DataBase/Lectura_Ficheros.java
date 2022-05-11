@@ -3,12 +3,9 @@ package DataBase;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Lectura_Ficheros {
-
-
 
     public static FileReader fichero;
     public static BufferedReader br = null;
@@ -21,10 +18,10 @@ public class Lectura_Ficheros {
 
     public static List<Cliente> obtenerClientes() {
 /**
- * creamos las variables con los nombres que tenemos en la clase Cliente, para que a cada iteracion de la clase
+ * Creamos las variables con los nombres que tenemos en la clase Cliente, para que a cada iteracion de la clase
  * Scanner introduzca el valor de cada campo en la variable correspondiente. En el while lo que hacemos
- * es que mientras que la linea sea distinta de null, la lea y si, es un entero hasta el espacio lo almacene en la variable creada
- * para cada caso. En el ArrayList introducimos los valores de cada iteracion,
+ * es que mientras que la linea sea distinta de null itere y continue introduciendo datos
+ * Todo metido en la clausula Try-catch para controlar los posibles errores que causan los ficheros
  */
         List<Cliente> listaClientes = new ArrayList<>();
 
@@ -89,10 +86,8 @@ public class Lectura_Ficheros {
     }
     public static List<CLientesConDireccion> obtenerClientesDireccion() {
 /**
- * creamos las variables con los nombres que tenemos en la clase Cliente, para que a cada iteracion de la clase
- * Scanner introduzca el valor de cada campo en la variable correspondiente. En el while lo que hacemos
- * es que mientras que la linea sea distinta de null, la lea y si, es un entero hasta el espacio lo almacene en la variable creada
- * para cada caso. En el ArrayList introducimos los valores de cada iteracion,
+ * Al igual que el metodo anterior introducimos los datos en la clase Cliente con Direccion,
+ * Todo metido en la clausula Try-catch para controlar los posibles errores que causan los ficheros
  */
 
         List<CLientesConDireccion> listaClientesDireccion=new ArrayList<>();
@@ -166,6 +161,11 @@ public class Lectura_Ficheros {
         return listaClientesDireccion;
     }
 
+    /**
+     * Metodo para crear el fichero dependiendo del argumento introducido por paramentros, en el le indicamos el fichero
+     * que queremos que lea
+     * @param fichero
+     */
     public static void obtenerClientes(String fichero){
 
         try {

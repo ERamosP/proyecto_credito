@@ -2,6 +2,11 @@ package DataBase;
 
 import java.io.Serializable;
 
+/**
+ * Creamos la clase cliente para introducir los valores generado por el fichero en la misma.
+ * implementamos la clase serializable para poder utilizar el ObjectOutputStream y la clase comparable para tener el
+ * metodo compareTo por si nos hiciera falta
+ */
 public class Cliente implements Serializable, Comparable{
 
     private int numeroCliente;
@@ -85,7 +90,10 @@ public class Cliente implements Serializable, Comparable{
     }
 
 
-
+    /**
+     * creamos el metodo toString para que salga por consola los datos de los clientes
+     * @return
+     */
     @Override
     public String toString() {
         return  "numeroCliente= " + numeroCliente +

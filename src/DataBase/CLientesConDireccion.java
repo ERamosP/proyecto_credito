@@ -1,5 +1,9 @@
 package DataBase;
 
+/**
+ * Clase cliente con direccion para los clientes robinson o vips, extiende de la clase padre cliente e implementa dos
+ * atributos nuevos como son la direccion y el codigo postal
+ */
 public class CLientesConDireccion extends Cliente{
 
     private String direccion;
@@ -33,4 +37,5 @@ public class CLientesConDireccion extends Cliente{
         return  super.toString() + "direccion= " + direccion +
                 ", codPostal= " + codPostal;
     }
+
 }
