@@ -1,5 +1,6 @@
 package DataBase;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu_Y_Otros {
@@ -20,18 +21,7 @@ public class Menu_Y_Otros {
 
     }
 
-    public static void pintarMenuSecundario(){
 
-        System.out.println("""
-                ***************     Correspondencia a Clientes     ***************
-                
-                1.- Mandar correspondecia a clientes superVips
-                2.- Mandar correspondencia a clientes Robinson
-                0.- Salir
-                
-                ******************************************************************""");
-
-    }
 
     public static String leerDatos(){
 
@@ -47,35 +37,32 @@ public class Menu_Y_Otros {
         String opcion;
 
         do {
+
             salirMenuSecundario=false;
             pintarMenuPpal();
-
+            List<Cliente> listaClientes=null;
+            List<CLientesConDireccion> listaClientesDireccion=null;
             opcion=leerDatos();
+
+            if (opcion !="5"){
+
+                listaClientes=Lectura_Ficheros.obtenerClientes();
+                listaClientesDireccion =Lectura_Ficheros.obtenerClientesDireccion();
+            }
             switch (opcion){
-                case "1": {  Escritura_Ficheros.añadirClientesFichero(Lectura_Ficheros.obtenerClientes());
+
+                case "1": {  Escritura_Ficheros.añadirClientesFichero(listaClientes);
                     Lectura_Ficheros.obtenerClientes("ficheroClienteCero.dat");}
                 break;
-                case "2": Lectura_Ficheros.obtenerClientes("ficheroClienteCredito.dat");
+                case "2":{ Escritura_Ficheros.añadirClientesFichero(listaClientes);
+                    Lectura_Ficheros.obtenerClientes("ficheroClienteCredito.dat");}
                     break;
-                case "3": Lectura_Ficheros.obtenerClientes("ficheroClienteDebito.dat");
+                case "3":{ Escritura_Ficheros.añadirClientesFichero(listaClientes);
+                    Lectura_Ficheros.obtenerClientes("ficheroClienteDebito.dat");}
                     break;
-                case "4": do {
-                    pintarMenuSecundario();
-                    String opcionMenuSec=leerDatos();
-                    switch (opcionMenuSec){
-                        case "1":
-                            System.out.println("En construccion");
-                            break;
-                        case "2":
-                            System.out.println("En construccion");
-                            break;
-                        case "0":
-                           salirMenuSecundario=true;
-                            break;
-                        default:
-                            System.out.println("Opcion Incorrecta");
-                    }
-                }while (!salirMenuSecundario);
+                case "4":{ Escritura_Ficheros.añadirClientesFicheroDireccion(listaClientesDireccion);
+                    Lectura_Ficheros.obtenerClientesDireccion();
+                }
                     break;
                 case "5": salirMenuPpal=true;
                     break;

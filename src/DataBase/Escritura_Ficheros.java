@@ -27,6 +27,23 @@ public class Escritura_Ficheros {
         }
 
     }
+    public static void añadirClientesFicheroDireccion(List<CLientesConDireccion> listaClientes){
+
+        try {
+            fos=new FileOutputStream("ficheroCliente.dat");
+            oos=new ObjectOutputStream(fos);
+
+            for (int i = 0; i <listaClientes.size() ; i++) {
+                oos.writeObject(listaClientes.get(i));
+            }
+
+
+
+        }catch (IOException ex){
+            System.out.println("Error");
+        }
+
+    }
 
     public static void añadirSaldoCero(List<Cliente> listaClientes){
 

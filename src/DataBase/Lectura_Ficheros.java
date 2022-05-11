@@ -27,6 +27,75 @@ public class Lectura_Ficheros {
  * para cada caso. En el ArrayList introducimos los valores de cada iteracion,
  */
         List<Cliente> listaClientes = new ArrayList<>();
+
+        int numeroCliente = 0;
+        String nombre = "";
+        String apellido1 = "";
+        String apellido2 = "";
+        int saldo = 0;
+        int ingresosMedios = 0;
+        int gastosMedios = 0;
+
+        try {
+
+            fichero = new FileReader("db.txt");
+            br = new BufferedReader(fichero);
+            linea = br.readLine();
+
+            while (linea != null) {
+
+                sc=new Scanner(linea);
+
+                if (sc.hasNextInt()) {
+                    numeroCliente = sc.nextInt();
+                }
+                if (sc.hasNext()) {
+                    nombre = sc.next();
+                }
+                if (sc.hasNext()) {
+                    apellido1 = sc.next();
+                }
+                if (sc.hasNext()) {
+                    apellido2 = sc.next();
+                }
+                if (sc.hasNextInt()) {
+                    saldo = sc.nextInt();
+                }
+                if (sc.hasNextInt()) {
+                    ingresosMedios = sc.nextInt();
+                }
+                if (sc.hasNextInt()) {
+                    gastosMedios = sc.nextInt();
+                }
+
+                listaClientes.add(new Cliente(numeroCliente, nombre, apellido1, apellido2, saldo, ingresosMedios, gastosMedios));
+                linea = br.readLine();
+            }
+
+
+        } catch (
+                IOException ex) {
+            System.out.println("Error general");
+        } finally {
+            try {
+                fichero.close();
+                br.close();
+            } catch (IOException ex) {
+                System.out.println("Error al cerrar el fichero");
+            }
+        }
+
+        return listaClientes;
+    }
+    public static List<CLientesConDireccion> obtenerClientesDireccion() {
+/**
+ * creamos las variables con los nombres que tenemos en la clase Cliente, para que a cada iteracion de la clase
+ * Scanner introduzca el valor de cada campo en la variable correspondiente. En el while lo que hacemos
+ * es que mientras que la linea sea distinta de null, la lea y si, es un entero hasta el espacio lo almacene en la variable creada
+ * para cada caso. En el ArrayList introducimos los valores de cada iteracion,
+ */
+
+        List<CLientesConDireccion> listaClientesDireccion=new ArrayList<>();
         int numeroCliente = 0;
         String nombre = "";
         String apellido1 = "";
@@ -75,7 +144,9 @@ public class Lectura_Ficheros {
                     codPostal = sc.nextInt();
                 }
 
-                listaClientes.add(new Cliente(numeroCliente, nombre, apellido1, apellido2, saldo, ingresosMedios, gastosMedios, direccion, codPostal));
+
+                listaClientesDireccion.add(new CLientesConDireccion(numeroCliente, nombre, apellido1, apellido2,
+                        saldo, ingresosMedios, gastosMedios, direccion,codPostal));
                 linea = br.readLine();
             }
 
@@ -85,13 +156,14 @@ public class Lectura_Ficheros {
             System.out.println("Error general");
         } finally {
             try {
+                fichero.close();
                 br.close();
             } catch (IOException ex) {
                 System.out.println("Error al cerrar el fichero");
             }
         }
 
-        return listaClientes;
+        return listaClientesDireccion;
     }
 
     public static void obtenerClientes(String fichero){
@@ -106,15 +178,15 @@ public class Lectura_Ficheros {
                 aux=ois.readObject();
             }
 
-
         } catch (FileNotFoundException e) {
             System.out.println("fichero no encontrado");
         } catch (IOException e) {
-            System.out.println("error");
+            System.out.println("Fin de fichero");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
+
 
 
 }
