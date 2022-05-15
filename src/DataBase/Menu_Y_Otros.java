@@ -35,6 +35,8 @@ public class Menu_Y_Otros {
         Scanner sc=new Scanner(System.in);
 
         return sc.nextLine();
+
+
     }
 
     /**
